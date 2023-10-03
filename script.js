@@ -3,6 +3,7 @@ let NextOrStop = function () {
   if (!confirm("Начать новую игру?")) {
     alert("Игра завершена!");
   } else {
+    attempts = 10;
     guessTheNumber();
   }
 };
@@ -13,6 +14,11 @@ let counter = function () {
 
 const guessTheNumber = function () {
   const n = 100;
+
+  if (attempts === 0) {
+    alert("Игра окончена!");
+    NextOrStop();
+  }
 
   let question = prompt(
     "Угадай число от 1 до 100. У Вас " + attempts + " попыток"
