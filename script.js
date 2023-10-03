@@ -1,3 +1,4 @@
+let attempts = 10;
 let NextOrStop = function () {
   if (!confirm("Начать новую игру?")) {
     alert("Игра завершена!");
@@ -6,17 +7,16 @@ let NextOrStop = function () {
   }
 };
 
-let isNumber = function (num) {
-  if (isNaN(question)) {
-    alert("Введите число!");
-    question = prompt("Угадай число от 1 до 100");
-  }
+let counter = function () {
+  attempts--;
 };
 
 const guessTheNumber = function () {
   const n = 100;
 
-  let question = prompt("Угадай число от 1 до 100");
+  let question = prompt(
+    "Угадай число от 1 до 100. У Вас " + attempts + " попыток"
+  );
 
   if (question === null) {
     alert("Игра завершена!");
@@ -31,13 +31,14 @@ const guessTheNumber = function () {
 
     let NumberIsLessOrGreater = function (num) {
       if (num < n) {
-        alert("Загаданное число больше!");
+        alert("Загаданное число больше! Осталось попыток: " + attempts);
       } else if (num > n) {
-        alert("Загаданное число меньше!");
+        alert("Загаданное число больше! Осталось попыток: " + attempts);
       }
     };
 
     if (conversion !== n) {
+      counter();
       NumberIsLessOrGreater(conversion);
       guessTheNumber();
     } else {
